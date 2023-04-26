@@ -5,7 +5,7 @@ docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_
 
 backend:
 docker build -t goals-node .
-docker run --name goals-backend --rm -d -p 80:80 --network goals-net goals-node 
+docker run --name goals-backend -v "%cd%":/app -v logs:/app/logs -v /app/node_modules --rm -d -p 80:80 --network goals-net goals-node
 
 frontend:
 docker run --name goals-frontend --rm -d -p 3000:3000 -it goals-react
