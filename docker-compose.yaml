@@ -1,5 +1,16 @@
 version: '3.8'
 services:
   mongodb:
-  backend:
-  frontend:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    # environment:
+    #   #- MONGO_INITDB_ROOT_USERNAME=brigo
+    #   MONGO_INITDB_ROOT_PASSWORD: brigo
+    #   MONGO_INITDB_ROOT_USERNAME: brigo
+    env_file:
+      - ./env/mongo.env
+  # backend:
+  # frontend:
+volumes:
+  data:
